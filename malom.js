@@ -27,7 +27,7 @@ malom = [
 ]
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("mt").innerHTML = malom.map(p => 
-        `<circle cx="${p.x}" cy="${p.y}" r="${r}" fill="${p.b}" stroke="black"></circle>`
+        `<circle cx="${p.x}" cy="${p.y}" r="${r}" fill="${p.b}" stroke="#123432"></circle>`
     ).join("\n") + 
     malom.map(p => p.sz.map(j => {
         if (j < malom.length) {
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
             y = [malom[j].y, p.y].sort((a, b) => a - b)
             if (x[0] == x[1]) y = [y[0]+r, y[1]-r]
             else x = [x[0]+r, x[1]-r]
-            return `<line x1="${x[0]}" y1="${y[0]}" x2="${x[1]}" y2="${y[1]}" stroke="black" />`
+            return `<line x1="${x[0]}" y1="${y[0]}" x2="${x[1]}" y2="${y[1]}" stroke="#123432" />`
         }
     }).join("\n")).join("\n")
 })
