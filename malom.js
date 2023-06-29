@@ -45,6 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
             c = Math.sqrt((x[1] - x[0]) ** 2 + (y[1] - y[0]) ** 2)
             y = [y[0] + r * (y[1] - y[0]) / c, y[1] - r * (y[1] - y[0]) / c]
             x = [x[0] + r * (x[1] - x[0]) / c, x[1] - r * (x[1] - x[0]) / c]
+            // https://user-images.githubusercontent.com/34095687/249900032-7441001b-7f75-422e-a8f1-31fd893f7538.jpeg
             return `<line x1="${x[0]}" y1="${y[0]}" x2="${x[1]}" y2="${y[1]}" stroke="#123432" stroke-width="0.6"/>`
         }
     }).join("")).join("")
