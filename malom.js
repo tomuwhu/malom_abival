@@ -10,19 +10,19 @@ d = [
         sz: [0, 2, 4] },
     {   x: 110,     // 2
         y: 10,
-        b: "#94c7fe",
-        sz: [1, 7, 14] },  // a 7-eshez nem kell kötni, az csak a srég-vonal-teszt
+        b: "#94c7fe",       // szín-teszt #1
+        sz: [1, 7, 14] },   // a 7-eshez nem kell kötni, az csak a srég-vonal-teszt
     {   x: 25,      // 3
         y: 25,
         b: "white",
         sz: [4, 10] },
     {   x: 60,      // 4
         y: 25,
-        b: "red",
+        b: "red",           // szín-teszt #2
         sz: [1, 3, 5, 7] },
     {   x: 95,      // 5
         y: 25,
-        b: "blue",
+        b: "blue",          // szín-teszt #3
         sz: [4, 13] },
     {   x: 40,      // 6
         y: 40,
@@ -30,7 +30,7 @@ d = [
         sz: [7, 11] },
     {   x: 100,      // 7 (ez igazából x: 60, y: 40, és sz: [4, 6, 8], csak a srég-vonal-teszt miatt van ez)
         y: 33,
-        b: "yellow",
+        b: "yellow",        // szín-teszt #4
         sz: [2, 4, 6, 8] },
     // HF: folytatni! (a srég-vonal-teszt törölhető)
 ]
