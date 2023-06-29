@@ -27,19 +27,19 @@ malom = [
     {
         x: 60,
         y: 25,
-        b: "none",
+        b: "red",
         sz: [1, 3, 5]
     },
     {
         x: 95,
         y: 25,
-        b: "none",
+        b: "blue",
         sz: [4, 13]
     }
 ]
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("mt").innerHTML = malom.map((p, i) => 
-        `<circle cx="${p.x}" cy="${p.y}" r="${r}" fill="none" stroke="black"></circle>`
+        `<circle cx="${p.x}" cy="${p.y}" r="${r}" fill="${p.b}" stroke="black"></circle>`
     ).join("") + 
     malom.map((p, i) => p.sz.map(j => {
         if (j < malom.length) {
