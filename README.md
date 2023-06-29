@@ -1,4 +1,4 @@
-# malom_abival
+# Mill Game by Abi & Dad
 
 Pure JS project to Learn JS
 
