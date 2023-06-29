@@ -2,6 +2,6 @@
 
 Pure JS project to Learn JS
 
-This is i simple game developing:
+This is a simple game developing:
 2 player mill game
 
