@@ -1,29 +1,37 @@
 r = 3.1
 malom = [
-    {   x: 10,
+    {   x: 10,      // 0
         y: 10,
         b: "white",
         sz: [1, 9] }, 
-    {   x: 60,
+    {   x: 60,      // 1
         y: 10,
         b: "white",
         sz: [0, 2, 4] },
-    {   x: 110,
+    {   x: 110,     // 2
         y: 10,
         b: "white",
         sz: [1, 14] },
-    {   x: 25,
+    {   x: 25,      // 3
         y: 25,
         b: "white",
         sz: [4, 10] },
-    {   x: 60,
+    {   x: 60,      // 4
         y: 25,
         b: "red",
-        sz: [1, 3, 5] },
-    {   x: 95,
+        sz: [1, 3, 5, 7] },
+    {   x: 95,      // 5
         y: 25,
         b: "blue",
         sz: [4, 13] },
+    {   x: 40,      // 6
+        y: 40,
+        b: "white",
+        sz: [7, 11] },
+    {   x: 60,      // 7
+        y: 40,
+        b: "white",
+        sz: [4, 6, 8] },
 ]
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("mt").innerHTML = malom.map(p => 
