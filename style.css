@@ -25,8 +25,8 @@ h1 {
 }
 circle {
     cursor: pointer;
-    filter: drop-shadow( 1px 1px 1px rgba(0, 0, 0, .2));
+    filter: drop-shadow( .4px .4px .6px rgba(0, 0, 0, .3));
 }
 line {
-    filter: drop-shadow( 1px 1px 1px rgba(0, 0, 0, .2));
+    filter: drop-shadow( .4px .4px .6px rgba(0, 0, 0, .3));
 }
