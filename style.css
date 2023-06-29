@@ -1,0 +1,10 @@
+#mt {
+    margin: auto;
+    width: 600px;
+    border: solid 1px black;
+    border-radius: 6px;
+    box-shadow: 1px 1px 4px inset black;
+}
+body {
+    text-align: center;
+}

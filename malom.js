@@ -24,11 +24,11 @@ malom = [
         sz: [4, 10]
     }
 ]
-document.addEventListener("DOMContentLoaded", () => 
+document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("mt").innerHTML = malom.map((p, i) => 
-    `<circle cx="${p.x}" cy="${p.y}" r="6" fill="none" stroke="#f00000" stroke-width="2"></circle>`
+        `<circle cx="${p.x}" cy="${p.y}" r="6" fill="none" stroke="black"></circle>`
     ).join("")
-)
+})
 
 
 
