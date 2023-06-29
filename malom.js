@@ -32,7 +32,7 @@ d = [
         y: 33,
         b: "yellow",        // szín-teszt #4
         sz: [2, 4, 6, 8] },
-    // HF: folytatni! (a srég-vonal-teszt törölhető)
+    // HF: folytatni! (a srég-vonal-teszt és a színtesztek törölhetők)
 ]
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("mt").innerHTML = d.map(p => 
