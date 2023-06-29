@@ -28,7 +28,7 @@ d = [
         y: 40,
         b: "white",
         sz: [7, 11] },
-    {   x: 100,      // 7   // ez igazából x: 60, y: 40, és sz: [4, 6, 8], csak a srég-vonal teszt miatt van ez
+    {   x: 100,      // 7   // ez igazából x: 60, y: 40, és sz: [4, 6, 8], csak a srég-vonal-teszt miatt van ez
         y: 100,
         b: "#94c7fe",
         sz: [2, 4, 6, 8] },
