@@ -11,7 +11,7 @@ d = [
     {   x: 110,     // 2
         y: 10,
         b: "#94c7fe",       // szín-teszt #1
-        sz: [1, 7, 14] },   // a 7-eshez nem kell kötni, az csak a srég-vonal-teszt
+        sz: [1, 7, 14] },   // a 7-eshez nem kell kötni, az csak a srég-vonal-teszt, helyesen [1, 14]
     {   x: 25,      // 3
         y: 25,
         b: "white",
@@ -28,7 +28,7 @@ d = [
         y: 40,
         b: "white",
         sz: [7, 11] },
-    {   x: 100,      // 7 (ez igazából x: 60, y: 40, és sz: [4, 6, 8], csak a srég-vonal-teszt miatt van ez)
+    {   x: 100,      // 7   (ez helyesen x: 60, y: 40, és sz: [4, 6, 8], csak a srég-vonal-teszt miatt van ez)
         y: 33,
         b: "yellow",        // szín-teszt #4
         sz: [2, 4, 6, 8] },
