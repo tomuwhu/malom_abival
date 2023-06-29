@@ -11,7 +11,7 @@ d = [
     {   x: 110,     // 2
         y: 10,
         b: "white",
-        sz: [1, 14] },
+        sz: [1, 7, 14] },
     {   x: 25,      // 3
         y: 25,
         b: "white",
@@ -28,10 +28,10 @@ d = [
         y: 40,
         b: "white",
         sz: [7, 11] },
-    {   x: 60,      // 7
-        y: 40,
-        b: "white",
-        sz: [4, 6, 8] },
+    {   x: 100,      // 7
+        y: 100,
+        b: "#94c7fe",
+        sz: [2, 4, 6, 8] },
 ]
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("mt").innerHTML = d.map(p => 
@@ -39,10 +39,11 @@ document.addEventListener("DOMContentLoaded", () => {
     ).join("") + 
     d.map(p => p.sz.map(i => {
         if (i < d.length) {
-            x = [d[i].x, p.x].sort((a, b) => a - b)
-            y = [d[i].y, p.y].sort((a, b) => a - b)
-            if (x[0] == x[1]) y = [y[0] + r, y[1] - r]
-            else x = [x[0] + r, x[1] - r]
+            x = [d[i].x, p.x]
+            y = [d[i].y, p.y]
+            c = Math.sqrt((x[1] - x[0]) ** 2 + (y[1] - y[0]) ** 2)
+            y = [y[0] + r * (y[1] - y[0]) / c, y[1] - r * (y[1] - y[0]) / c]
+            x = [x[0] + r * (x[1] - x[0]) / c, x[1] - r * (x[1] - x[0]) / c]
             return `<line x1="${x[0]}" y1="${y[0]}" x2="${x[1]}" y2="${y[1]}" stroke="#123432" stroke-width="0.6"/>`
         }
     }).join("")).join("")
