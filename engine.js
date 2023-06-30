@@ -48,7 +48,7 @@ function dragstart(e) {
 function dragend(e) {
     e.target.style = ""
     id = drag.started
-    if (id > 0) {
+    if (id >= 0) {
         document.getElementById(`c${id}`).setAttribute("fill", "white")
         cx = Number(e.target.getAttribute("cx"))
         cy = Number(e.target.getAttribute("cy"))
@@ -71,7 +71,7 @@ function dragend(e) {
     }
 }
 function move(e) {
-    if (drag.started > 0) {
+    if (drag.started >= 0) {
         id = drag.started
         o = document.getElementById(`x${id}`)
         x = Number(o.getAttribute("cx"))
