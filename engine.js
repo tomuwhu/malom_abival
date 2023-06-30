@@ -10,15 +10,15 @@ d = [
         nl: [0, 2, 4] },
     {   x: 110,     // 2
         y: 10,
-        b: "#94c7fe",       // color-test #1
+        b: "#94c7fe",       
         nl: [1, 7, 14] },   // a 7-is wrong, this is only a test for slant line. Correctly: [1, 14]
     {   x: 25,      // 3
         y: 25,
-        b: "white",
+        b: "Crimson",          // color-test #2  //https://htmlcolorcodes.com/color-names/
         nl: [4, 10] },
     {   x: 60,      // 4
         y: 25,
-        b: "Crimson",           // color-test #2  //https://htmlcolorcodes.com/color-names/
+        b: "white",          
         nl: [1, 3, 5, 7] },
     {   x: 95,      // 5
         y: 25,
@@ -34,46 +34,65 @@ d = [
         nl: [2, 4, 6, 8] },
     // HW: to continue! (the slant line test and the color-test can be deleted)
 ]
-drag = { started: false, sx: 0, sy: 0, lastx: 0, lasty: 0 }
+drag = { started: -1, sx: 0, sy: 0, lastx: 0, lasty: 0 }
 function dragstart(e) {
     id = e.target.getAttribute("id").substring(1)
     document.getElementById(`c${id}`).setAttribute("fill","#bababe")
     drag.sx = e.target.getAttribute("cx"), drag.sy = e.target.getAttribute("cy")
-    drag.started = true, drag.lastx = e.x, drag.lasty = e.y
+    drag.started = id, drag.lastx = e.x, drag.lasty = e.y
     e.target.style = "cursor: grab;"
 }
 function dragend(e) {
     e.target.style = ""
-    drag.started = false
-    id = e.target.getAttribute("id").substring(1)
-    document.getElementById(`c${id}`).setAttribute("fill","white")
-    cx = Number(e.target.getAttribute("cx"))
-    cy = Number(e.target.getAttribute("cy"))
-    gp = false
-    d[id].nl.forEach(n => {
-        if (n < d.length && d[n].b && Math.abs(d[n].x - cx) < r && Math.abs(d[n].x - cx) < r)
-            gp = true, gpn = n
-    })
-    if (gp) {
-        d[gpn].b = d[id].b
-        d[id].b = "white"
-        e.target.setAttribute("cx",  d[gpn].x)
-        e.target.setAttribute("cy",  d[gpn].y)
-        e.target.setAttribute("id",`x${gpn}`)
-    } else {
-        e.target.setAttribute("cx", drag.sx)
-        e.target.setAttribute("cy", drag.sy)
+    id = drag.started
+    if (id > 0) {
+        document.getElementById(`c${id}`).setAttribute("fill", "white")
+        cx = Number(e.target.getAttribute("cx"))
+        cy = Number(e.target.getAttribute("cy"))
+        gp = false
+        d[id].nl.forEach(n => {
+            if (n < d.length && d[n].b == "white" && Math.abs(d[n].x - cx) < r && Math.abs(d[n].y - cy) < r) {
+                gp = true
+                gpn = n
+            }
+        })
+        if (gp) {
+            d[gpn].b = d[id].b
+            d[id].b = "white"
+            e.target.setAttribute("cx",  d[gpn].x)
+            e.target.setAttribute("cy",  d[gpn].y)
+            e.target.setAttribute("id",`x${gpn}`)
+        } else {
+            e.target.setAttribute("cx", drag.sx)
+            e.target.setAttribute("cy", drag.sy)
+        }
+        gp = false
+        drag.started = -1
     }
-    gp = false
 }
 function move(e) {
-    if (drag.started) {
-        x = Number(e.target.getAttribute("cx"))
-        y = Number(e.target.getAttribute("cy"))
-        e.target.setAttribute("cx", x + (e.x - drag.lastx)/5)
-        e.target.setAttribute("cy", y + (e.y - drag.lasty)/5)
-        drag.lastx = e.x
-        drag.lasty = e.y
+    if (drag.started > 0) {
+        id = e.target.getAttribute("id").substring(1)
+        if (drag.started == id) {
+            x = Number(e.target.getAttribute("cx"))
+            y = Number(e.target.getAttribute("cy"))
+            nx = x + (e.x - drag.lastx) / 5
+            ny = y + (e.y - drag.lasty) / 5
+            e.target.setAttribute("cx", nx )
+            e.target.setAttribute("cy", ny )
+            drag.lastx = e.x
+            drag.lasty = e.y
+        }
+    }
+}
+function endmove(t) {
+    id = t.getAttribute("id").substring(1)
+    if (drag.started == id) {
+        t.style = ""
+        drag.started = -1
+        document.getElementById(`c${id}`).setAttribute("fill","white")
+        t.setAttribute("cx", drag.sx)
+        t.setAttribute("cy", drag.sy)
     }
 }
 document.addEventListener("DOMContentLoaded", () => {
@@ -93,6 +112,6 @@ document.addEventListener("DOMContentLoaded", () => {
         if (p.b != "white") return `
         <circle id="x${i}" cx="${p.x}" cy="${p.y}" r="${r - .8}" fill="${p.b}" 
                 class="cx" onmousedown="dragstart(event)" stroke="#333" stroke-width=".3"
-                onmouseup="dragend(event)" onmousemove="move(event)" />`
+                onmouseup="dragend(event)" onmousemove="move(event)" onmouseout="endmove(this)"/>`
     }).join("")
 })
