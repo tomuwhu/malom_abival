@@ -18,11 +18,11 @@ d = [
         nl: [4, 10] },
     {   x: 60,      // 4
         y: 25,
-        b: "red",           // color-test #2
+        b: "Crimson",           // color-test #2  //https://htmlcolorcodes.com/color-names/
         nl: [1, 3, 5, 7] },
     {   x: 95,      // 5
         y: 25,
-        b: "blue",          // color-test #3
+        b: "RoyalBlue",          // color-test #3 
         nl: [4, 13] },
     {   x: 40,      // 6
         y: 40,
@@ -35,8 +35,8 @@ d = [
     // HW: to continue! (the slant line test and the color-test can be deleted)
 ]
 document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("mt").innerHTML = d.map(p => 
-        `<circle cx="${p.x}" cy="${p.y}" r="${r}" fill="${p.b}" stroke="#123432" stroke-width="0.6" />`
+    document.getElementById("mt").innerHTML = d.map((p, i) => 
+        `<circle id="c${i}" cx="${p.x}" cy="${p.y}" r="${r}" fill="${p.b}" stroke="#123432" stroke-width="0.6" />`
     ).join("") + 
     d.map(p => p.nl.map(i => {
         if (i < d.length) {
