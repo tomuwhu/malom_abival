@@ -39,7 +39,7 @@ function dragstart(e) {
     t = e.target
     id = t.getAttribute("id").substring(1)
     document.getElementById(`c${id}`).setAttribute("fill","#bababe")
-    drag.sx = e.target.getAttribute("cx"), drag.sy = e.target.getAttribute("cy")
+    drag.sx = t.getAttribute("cx"), drag.sy = t.getAttribute("cy")
     drag.started = id, drag.lastx = e.x, drag.lasty = e.y
     t.style = "cursor: grab;"
     t.remove()
