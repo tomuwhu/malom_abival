@@ -6,6 +6,9 @@
     box-shadow: 1px 1px 4px inset black;
     background-color: rgb(245, 239, 231);
 }
+.dragging {
+    cursor: grab;
+}
 body {
     text-align: center;
     background-color: aquamarine;

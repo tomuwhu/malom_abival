@@ -34,27 +34,22 @@ d = [
         nl: [2, 4, 6, 8] },
     // HW: to continue! (the slant line test and the color-test can be deleted)
 ]
-drag = {
-    started: false,
-    sx: 0,
-    sy: 0,
-    lastx: 0,
-    lasty: 0
-}
+drag = { started: false, sx: 0, sy: 0, lastx: 0, lasty: 0 }
 function dragstart(e) {
     drag.sx = e.target.getAttribute("cx"), drag.sy = e.target.getAttribute("cy")
     drag.started = true, drag.lastx = e.x, drag.lasty = e.y
+    e.target.style = "cursor: grab;"
 }
 function dragend(e) {
+    e.target.style = ""
     drag.started = false
     id = e.target.getAttribute("id").substring(1)
     cx = Number(e.target.getAttribute("cx"))
     cy = Number(e.target.getAttribute("cy"))
     gp = false
     d[id].nl.forEach(n => {
-        if (n < d.length && d[n].b && Math.abs(d[n].x - cx) < 2.5 && Math.abs(d[n].x - cx) < 2.5) {
-            gp = true
-            gpn = n
+        if (n < d.length && d[n].b && Math.abs(d[n].x - cx) < r && Math.abs(d[n].x - cx) < r) {
+            gp = true, gpn = n
         }
     })
     if (gp) {
