@@ -48,9 +48,8 @@ function dragend(e) {
     cy = Number(e.target.getAttribute("cy"))
     gp = false
     d[id].nl.forEach(n => {
-        if (n < d.length && d[n].b && Math.abs(d[n].x - cx) < r && Math.abs(d[n].x - cx) < r) {
+        if (n < d.length && d[n].b && Math.abs(d[n].x - cx) < r && Math.abs(d[n].x - cx) < r)
             gp = true, gpn = n
-        }
     })
     if (gp) {
         d[gpn].b = d[id].b
@@ -89,8 +88,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }).join("")).join("") + 
     d.map((p, i) => {
         if (p.b != "white") return `
-        <circle id="x${i}" cx="${p.x}" cy="${p.y}" r="${r - 1}" fill="${p.b}"
-                class="cx" onmousedown="dragstart(event)"
+        <circle id="x${i}" cx="${p.x}" cy="${p.y}" r="${r - .8}" fill="${p.b}" 
+                class="cx" onmousedown="dragstart(event)" stroke="#333" stroke-width=".3"
                 onmouseup="dragend(event)" onmousemove="move(event)" />`
     }).join("")
 
