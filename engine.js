@@ -34,10 +34,54 @@ d = [
         nl: [2, 4, 6, 8] },
     // HW: to continue! (the slant line test and the color-test can be deleted)
 ]
+drag = {
+    started: false,
+    sx: 0,
+    sy: 0,
+    lastx: 0,
+    lasty: 0
+}
+function dragstart(e) {
+    drag.sx = e.target.getAttribute("cx"), drag.sy = e.target.getAttribute("cy")
+    drag.started = true, drag.lastx = e.x, drag.lasty = e.y
+}
+function dragend(e) {
+    drag.started = false
+    id = e.target.getAttribute("id").substring(1)
+    cx = Number(e.target.getAttribute("cx"))
+    cy = Number(e.target.getAttribute("cy"))
+    gp = false
+    d[id].nl.forEach(n => {
+        if (n < d.length && d[n].b && Math.abs(d[n].x - cx) < 2.5 && Math.abs(d[n].x - cx) < 2.5) {
+            gp = true
+            gpn = n
+        }
+    })
+    if (gp) {
+        d[gpn].b = d[id].b
+        d[id].b = "white"
+        e.target.setAttribute("cx",  d[gpn].x)
+        e.target.setAttribute("cy",  d[gpn].y)
+        e.target.setAttribute("id", `x${gpn}`)
+    } else {
+        e.target.setAttribute("cx", drag.sx)
+        e.target.setAttribute("cy", drag.sy)
+    }
+    gp = false
+}
+function move(e) {
+    if (drag.started) {
+        x = Number(e.target.getAttribute("cx"))
+        y = Number(e.target.getAttribute("cy"))
+        e.target.setAttribute("cx", x + (e.x - drag.lastx)/5)
+        e.target.setAttribute("cy", y + (e.y - drag.lasty)/5)
+        drag.lastx = e.x
+        drag.lasty = e.y
+    }
+}
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("mt").innerHTML = d.map((p, i) => 
-        `<circle    id="c${i}" cx="${p.x}" cy="${p.y}" r="${r}" fill="${p.b}" 
-                    class="cx" stroke="#123432" stroke-width="0.6" />`
+        `<circle id="c${i}" cx="${p.x}" cy="${p.y}" r="${r}" fill="white" stroke="#123432" stroke-width="0.6" />`
     ).join("") + 
     d.map(p => p.nl.map(i => {
         if (i < d.length) {
@@ -47,7 +91,14 @@ document.addEventListener("DOMContentLoaded", () => {
             // https://user-images.githubusercontent.com/34095687/249900032-7441001b-7f75-422e-a8f1-31fd893f7538.jpeg
             return `<line x1="${x[0]}" y1="${y[0]}" x2="${x[1]}" y2="${y[1]}" stroke="#123432" stroke-width="0.6"/>`
         }
-    }).join("")).join("")
+    }).join("")).join("") + 
+    d.map((p, i) => {
+        if (p.b != "white") return `
+        <circle id="x${i}" cx="${p.x}" cy="${p.y}" r="${r - 1}" fill="${p.b}"
+                class="cx" onmousedown="dragstart(event)"
+                onmouseup="dragend(event)" onmousemove="move(event)" />`
+    }).join("")
+
 })
 
 
