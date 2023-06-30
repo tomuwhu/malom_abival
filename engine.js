@@ -36,6 +36,8 @@ d = [
 ]
 drag = { started: false, sx: 0, sy: 0, lastx: 0, lasty: 0 }
 function dragstart(e) {
+    id = e.target.getAttribute("id").substring(1)
+    document.getElementById(`c${id}`).setAttribute("fill","#bababe")
     drag.sx = e.target.getAttribute("cx"), drag.sy = e.target.getAttribute("cy")
     drag.started = true, drag.lastx = e.x, drag.lasty = e.y
     e.target.style = "cursor: grab;"
@@ -44,6 +46,7 @@ function dragend(e) {
     e.target.style = ""
     drag.started = false
     id = e.target.getAttribute("id").substring(1)
+    document.getElementById(`c${id}`).setAttribute("fill","white")
     cx = Number(e.target.getAttribute("cx"))
     cy = Number(e.target.getAttribute("cy"))
     gp = false
