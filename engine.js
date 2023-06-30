@@ -54,14 +54,11 @@ function dragend(e) {
         cy = Number(e.target.getAttribute("cy"))
         gp = false
         d[id].nl.forEach(n => {
-            if (n < d.length && d[n].b == "white" && Math.abs(d[n].x - cx) < r && Math.abs(d[n].y - cy) < r) {
-                gp = true
-                gpn = n
-            }
+            if (n < d.length && d[n].b == "white" && Math.abs(d[n].x - cx) < r && Math.abs(d[n].y - cy) < r)
+                gp = true, gpn = n
         })
         if (gp) {
-            d[gpn].b = d[id].b
-            d[id].b = "white"
+            d[gpn].b = d[id].b, d[id].b = "white"
             e.target.setAttribute("cx",  d[gpn].x)
             e.target.setAttribute("cy",  d[gpn].y)
             e.target.setAttribute("id",`x${gpn}`)
@@ -75,27 +72,23 @@ function dragend(e) {
 }
 function move(e) {
     if (drag.started > 0) {
-        id = e.target.getAttribute("id").substring(1)
-        if (drag.started == id) {
-            x = Number(e.target.getAttribute("cx"))
-            y = Number(e.target.getAttribute("cy"))
-            nx = x + (e.x - drag.lastx) / 5
-            ny = y + (e.y - drag.lasty) / 5
-            e.target.setAttribute("cx", nx )
-            e.target.setAttribute("cy", ny )
-            drag.lastx = e.x
-            drag.lasty = e.y
-        }
+        id = drag.started
+        o = document.getElementById(`x${id}`)
+        x = Number(o.getAttribute("cx"))
+        y = Number(o.getAttribute("cy"))
+        nx = x + (e.x - drag.lastx) / 5
+        ny = y + (e.y - drag.lasty) / 5
+        o.setAttribute("cx", nx )
+        o.setAttribute("cy", ny )
+        drag.lastx = e.x, drag.lasty = e.y
     }
 }
 function endmove(t) {
     id = t.getAttribute("id").substring(1)
     if (drag.started == id) {
-        t.style = ""
-        drag.started = -1
+        t.style = "", drag.started = -1
         document.getElementById(`c${id}`).setAttribute("fill","white")
-        t.setAttribute("cx", drag.sx)
-        t.setAttribute("cy", drag.sy)
+        t.setAttribute("cx", drag.sx), t.setAttribute("cy", drag.sy)
     }
 }
 document.addEventListener("DOMContentLoaded", () => {
