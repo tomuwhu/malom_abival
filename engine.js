@@ -36,7 +36,8 @@ d = [
 ]
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("mt").innerHTML = d.map((p, i) => 
-        `<circle id="c${i}" cx="${p.x}" cy="${p.y}" r="${r}" fill="${p.b}" stroke="#123432" stroke-width="0.6" />`
+        `<circle    id="c${i}" cx="${p.x}" cy="${p.y}" r="${r}" fill="${p.b}" 
+                    class="cx" stroke="#123432" stroke-width="0.6" />`
     ).join("") + 
     d.map(p => p.nl.map(i => {
         if (i < d.length) {
