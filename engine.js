@@ -59,7 +59,7 @@ function dragend(e) {
         d[id].b = "white"
         e.target.setAttribute("cx",  d[gpn].x)
         e.target.setAttribute("cy",  d[gpn].y)
-        e.target.setAttribute("id", `x${gpn}`)
+        e.target.setAttribute("id",`x${gpn}`)
     } else {
         e.target.setAttribute("cx", drag.sx)
         e.target.setAttribute("cy", drag.sy)
@@ -95,8 +95,4 @@ document.addEventListener("DOMContentLoaded", () => {
                 class="cx" onmousedown="dragstart(event)" stroke="#333" stroke-width=".3"
                 onmouseup="dragend(event)" onmousemove="move(event)" />`
     }).join("")
-
 })
-
-
-
