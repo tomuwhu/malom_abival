@@ -14,7 +14,7 @@ d = [
         nl: [1, 14] },
     {   x: 25,      // 3
         y: 25,
-        b: "white",
+        b: "FireBrick", // https://htmlcolorcodes.com/color-names/
         nl: [4, 10] },
     {   x: 60,      // 4
         y: 25,
@@ -22,7 +22,7 @@ d = [
         nl: [1, 3, 5, 7] },
     {   x: 95,      // 5
         y: 25,
-        b: "white",
+        b: "Teal",
         nl: [4, 13] },
     {   x: 40,      // 6
         y: 40,

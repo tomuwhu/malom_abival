@@ -4,21 +4,21 @@
     border: solid 1px black;
     border-radius: 6px;
     box-shadow: 1px 1px 4px inset black;
-    background-color: rgb(245, 239, 231);
+    background-color: LightCyan;
 }
 .dragging {
     cursor: grab;
 }
 body {
     text-align: center;
-    background-color: aquamarine;
+    background-color: BlanchedAlmond;
     margin: 0px;
     user-select: none;
 }
 h1 {
     text-shadow: 1px 1px 4px gray;
     color: rgb(11, 42, 47);
-    background-color: rgb(224, 211, 237);
+    background-color: PaleTurquoise;
     display: inline-block;
     width: 600px;
     border-radius: 7px;
