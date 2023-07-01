@@ -10,29 +10,29 @@ d = [
         nl: [0, 2, 4] },
     {   x: 110,     // 2
         y: 10,
-        b: "white",
-        nl: [1, 14] },
+        b: "#94c7fe",       
+        nl: [1, 7, 14] },   // a 7-is wrong, this is only a test for slant line. Correctly: [1, 14]
     {   x: 25,      // 3
         y: 25,
-        b: "white",
+        b: "Crimson",       // color-test #2  //https://htmlcolorcodes.com/color-names/
         nl: [4, 10] },
     {   x: 60,      // 4
         y: 25,
-        b: "white",
+        b: "white",          
         nl: [1, 3, 5, 7] },
     {   x: 95,      // 5
         y: 25,
-        b: "white",
+        b: "RoyalBlue",     // color-test #3 
         nl: [4, 13] },
     {   x: 40,      // 6
         y: 40,
         b: "white",
         nl: [7, 11] },
-    {   x: 60,      // 7
-        y: 40,
-        b: "white",
-        nl: [4, 6, 8] },
-    // HW: to continue!
+    {   x: 100,      // 7   (correctly:  x: 60, y: 40, és nl: [4, 6, 8], slant line test)
+        y: 33,
+        b: "yellow",        // color-test #4
+        nl: [2, 4, 6, 8] },
+    // HW: to continue! (the slant line test and the color-test can be deleted)
 ]
 drag = { started: -1, sx: 0, sy: 0, lastx: 0, lasty: 0 }
 function dragstart(e) {
