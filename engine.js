@@ -14,7 +14,7 @@ d = [
         nl: [1, 14] },
     {   x: 25,      // 3
         y: 25,
-        b: "FireBrick", // https://htmlcolorcodes.com/color-names/
+        b: "white", // https://htmlcolorcodes.com/color-names/
         nl: [4, 10] },
     {   x: 60,      // 4
         y: 25,
@@ -22,7 +22,7 @@ d = [
         nl: [1, 3, 5, 7] },
     {   x: 95,      // 5
         y: 25,
-        b: "Teal",
+        b: "white",
         nl: [4, 13] },
     {   x: 40,      // 6
         y: 40,
@@ -101,7 +101,8 @@ drag = { started: -1, sx: 0, sy: 0, lastx: 0, lasty: 0 }
 function dragstart(e) {
     t = e.target
     id = t.getAttribute("id").substring(1)
-    document.getElementById(`c${id}`).setAttribute("fill","#bababe")
+    o = document.getElementById(`c${id}`) || document.getElementById(`n${id}`)
+    o.setAttribute("fill","#bababe")
     drag.sx = t.getAttribute("cx"), drag.sy = t.getAttribute("cy")
     drag.started = id, drag.lastx = e.x, drag.lasty = e.y
     t.style = "cursor: grab;"
@@ -112,16 +113,18 @@ function dragend(e) {
     e.target.style = ""
     id = drag.started
     if (id >= 0) {
-        document.getElementById(`c${id}`).setAttribute("fill", "white")
+        o = document.getElementById(`c${id}`) || document.getElementById(`n${id}`)
+        o.setAttribute("fill", "white")
         cx = Number(e.target.getAttribute("cx"))
         cy = Number(e.target.getAttribute("cy"))
         gp = false
-        d[id].nl.forEach(n => {
+        l = (d[id] || {nl: Array(24).fill(0).map((v, i) => i)}).nl
+        l.forEach(n => {
             if (n < d.length && d[n].b == "white" && Math.abs(d[n].x - cx) < 2 * r && Math.abs(d[n].y - cy) < 2 * r)
                 gp = true, gpn = n
         })
         if (gp) {
-            d[gpn].b = d[id].b, d[id].b = "white"
+            d[id] && (d[gpn].b = d[id].b, d[id].b = "white")
             e.target.setAttribute("cx",  d[gpn].x)
             e.target.setAttribute("cy",  d[gpn].y)
             e.target.setAttribute("id",`x${gpn}`)
@@ -136,7 +139,7 @@ function dragend(e) {
 function move(e) {
     if (drag.started >= 0) {
         id = drag.started
-        o = document.getElementById(`x${id}`)
+        o = document.getElementById(`x${id}`) || document.getElementById(`o${id}`)
         x = Number(o.getAttribute("cx"))
         y = Number(o.getAttribute("cy"))
         nx = x + (e.x - drag.lastx) / 5
@@ -172,5 +175,15 @@ document.addEventListener("DOMContentLoaded", () => {
         <circle id="x${i}" cx="${p.x}" cy="${p.y}" r="${r - .8}" fill="${p.b}" 
                 class="cx" onmousedown="dragstart(event)" stroke="#333" stroke-width=".3"
                 onmouseup="dragend(event)" onmousemove="move(event)"/>`
-    }).join("")
+    }).join("") +
+    Array(9).fill(0).map((p, i) => 
+        `<circle id="n${i+30}" cx="${20 + i*10}" cy="120" r="${r}" fill="white" stroke="#123432" stroke-width="0.6" />` +
+        `<circle id="n${i+40}" cx="${20 + i*10}" cy="130" r="${r}" fill="white" stroke="#123432" stroke-width="0.6" />` + 
+        `<circle id="o${i+30}" cx="${20 + i*10}" cy="120" r="${r - .8}" fill="FireBrick" 
+                class="cx" onmousedown="dragstart(event)" stroke="#333" stroke-width=".3"
+                onmouseup="dragend(event)" onmousemove="move(event)"/>` + 
+        `<circle id="o${i+40}" cx="${20 + i*10}" cy="130" r="${r - .8}" fill="Teal" 
+                class="cx" onmousedown="dragstart(event)" stroke="#333" stroke-width=".3"
+                onmouseup="dragend(event)" onmousemove="move(event)"/>`
+    ).join("")
 })
