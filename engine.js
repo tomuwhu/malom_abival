@@ -140,7 +140,7 @@ function dragend(e) {
                 d[id] && (d[gpn].b = d[id].b, d[id].b = "white")
                 d[gpn].b = cb
             } else {
-                d[id].b = "white"
+                d[id] && (d[id].b = "white")
             }
         } else {
             e.target.setAttribute("cx", drag.sx)
