@@ -108,6 +108,6 @@ document.addEventListener("DOMContentLoaded", () => {
         if (p.b != "white") return `
         <circle id="x${i}" cx="${p.x}" cy="${p.y}" r="${r - .8}" fill="${p.b}" 
                 class="cx" onmousedown="dragstart(event)" stroke="#333" stroke-width=".3"
-                onmouseup="dragend(event)" onmousemove="move(event)" onmouseout="endmove(this)"/>`
+                onmouseup="dragend(event)" onmousemove="move(event)"/>`
     }).join("")
 })
