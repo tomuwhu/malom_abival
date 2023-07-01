@@ -124,14 +124,24 @@ function dragend(e) {
         if (d.filter(v => v.b == cb).length < 4) l = all
         l.forEach(n => {
             if (n < d.length && d[n].b == "white" && Math.abs(d[n].x - cx) < 2 * r && Math.abs(d[n].y - cy) < 2 * r)
-                gp = true, gpn = n
+                gp = 1, gpn = n, gpx = d[gpn].x, gpy = d[gpn].y
+        })
+        Array(9).fill(0).map((v, i) => {
+            if (Math.abs(20 + i*10 - cx) < 2 * r && Math.abs(120 - cy) < 2 * r)
+                gp = 2, gpn = i + 30, gpx = 20 + i*10, gpy = 120
+                if (Math.abs(20 + i*10 - cx) < 2 * r && Math.abs(130 - cy) < 2 * r)
+                gp = 2, gpn = i + 30, gpx = 20 + i*10, gpy = 130
         })
         if (gp) {
-            d[id] && (d[gpn].b = d[id].b, d[id].b = "white")
-            e.target.setAttribute("cx",  d[gpn].x)
-            e.target.setAttribute("cy",  d[gpn].y)
+            e.target.setAttribute("cx", gpx)
+            e.target.setAttribute("cy", gpy)
             e.target.setAttribute("id",`x${gpn}`)
-            d[gpn].b = cb
+            if (gp == 1) {
+                d[id] && (d[gpn].b = d[id].b, d[id].b = "white")
+                d[gpn].b = cb
+            } else {
+                d[id].b = "white"
+            }
         } else {
             e.target.setAttribute("cx", drag.sx)
             e.target.setAttribute("cy", drag.sy)
