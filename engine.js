@@ -33,7 +33,7 @@ malom = [
         b: "white",
         sz: [4, 6, 8] },
 ]
-document.addEventListener("DOMContentLoaded", () => {
+function cica() {
     document.getElementById("mt").innerHTML = malom.map(p => 
         `<circle cx="${p.x}" cy="${p.y}" r="${r}" fill="${p.b}" stroke="#123432" stroke-width="0.6" />`
     ).join("") + 
@@ -46,4 +46,5 @@ document.addEventListener("DOMContentLoaded", () => {
             return `<line x1="${x[0]}" y1="${y[0]}" x2="${x[1]}" y2="${y[1]}" stroke="#123432" stroke-width="0.6"/>`
         }
     }).join("")).join("")
-})
+}
+document.addEventListener("DOMContentLoaded", cica)
