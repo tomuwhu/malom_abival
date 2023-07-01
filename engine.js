@@ -31,8 +31,71 @@ d = [
     {   x: 60,      // 7
         y: 40,
         b: "white",
-        nl: [4, 6, 8] },
-    // HW: to continue!
+        nl: [4,6,8] },
+    {   x: 80,      // 8
+        y: 40,
+        b: "white",
+        nl: [7, 12] },
+    {   x: 10,      // 9
+        y: 60,
+        b: "white",
+        nl: [0, 10, 21] },
+    {   x: 25,      // 10
+        y: 60,
+        b: "white",
+        nl: [3, 9, 11, 18] },
+    {   x: 40,      // 11
+        y: 60,
+        b: "white",
+        nl: [6, 10, 15] },
+    {   x: 80,      // 12
+        y: 60,
+        b: "white",
+        nl: [8, 13, 17] },
+    {   x: 95,      // 13
+        y: 60,
+        b: "white",
+        nl: [5, 12, 14, 20] },
+    {   x: 110,      // 14
+        y: 60,
+        b: "white",
+        nl: [2, 13, 23] },
+    {   x: 40,      // 15
+        y: 80,
+        b: "white",
+        nl: [11, 16] },
+    {   x: 60,      // 16
+        y: 80,
+        b: "white",
+        nl: [15, 17, 19] },
+    {   x: 80,      // 17
+        y: 80,
+        b: "white",
+        nl: [12, 16] },
+    {   x: 25,      // 18
+        y: 95,
+        b: "white",
+        nl: [10, 19] },
+    {   x: 60,      // 19
+        y: 95,
+        b: "white",
+        nl: [16, 18, 20] },
+    {   x: 95,      // 20
+        y: 95,
+        b: "white",
+        nl: [13, 19] },
+    {   x: 10,      // 21
+        y: 110,
+        b: "white",
+        nl: [9, 22] },
+    {   x: 60,      // 22
+        y: 110,
+        b: "white",
+        nl: [19, 21, 23] },
+    {   x: 110,      // 23
+        y: 110,
+        b: "white",
+        nl: [14, 22] }, 
 ]
 drag = { started: -1, sx: 0, sy: 0, lastx: 0, lasty: 0 }
 function dragstart(e) {
@@ -99,7 +162,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (i < d.length) {
             x = [d[i].x, p.x], y = [d[i].y, p.y], dy = y[1] - y[0], dx = x[1] - x[0]
             c = Math.sqrt((x[1] - x[0]) ** 2 + (y[1] - y[0]) ** 2)
-            y = [y[0] + r*dy/c, y[1] - r*dy/c], x = [x[0] + r*dx/c, x[1] - r*dx/c]
+            y = [y[0] + r*dy/c, y[1] - r*dy/c + 2], x = [x[0] + r*dx/c + 2, x[1] - r*dx/c]
             // https://user-images.githubusercontent.com/34095687/249900032-7441001b-7f75-422e-a8f1-31fd893f7538.jpeg
             return `<line x1="${x[0]}" y1="${y[0]}" x2="${x[1]}" y2="${y[1]}" stroke="#123432" stroke-width="0.6"/>`
         }
