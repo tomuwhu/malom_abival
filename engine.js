@@ -117,8 +117,11 @@ function dragend(e) {
         o.setAttribute("fill", "white")
         cx = Number(e.target.getAttribute("cx"))
         cy = Number(e.target.getAttribute("cy"))
+        cb = e.target.getAttribute("fill")
         gp = false
-        l = (d[id] || {nl: Array(24).fill(0).map((v, i) => i)}).nl
+        all = Array(24).fill(0).map((v, i) => i)
+        l = d[id] ? d[id].nl : all
+        if (d.filter(v => v.b == cb).length < 4) l = all
         l.forEach(n => {
             if (n < d.length && d[n].b == "white" && Math.abs(d[n].x - cx) < 2 * r && Math.abs(d[n].y - cy) < 2 * r)
                 gp = true, gpn = n
@@ -128,6 +131,7 @@ function dragend(e) {
             e.target.setAttribute("cx",  d[gpn].x)
             e.target.setAttribute("cy",  d[gpn].y)
             e.target.setAttribute("id",`x${gpn}`)
+            d[gpn].b = cb
         } else {
             e.target.setAttribute("cx", drag.sx)
             e.target.setAttribute("cy", drag.sy)
