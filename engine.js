@@ -2,37 +2,36 @@ r = 3.1
 d = [
     {   x: 10,      // 0
         y: 10,
-        b: "white",
-        nl: [1, 9] }, 
+        b: "#167",
+        nl: [1, 3, 6, 9] }, 
     {   x: 60,      // 1
         y: 10,
-        b: "white",
+        b: "#d67",
         nl: [0, 2, 4] },
     {   x: 110,     // 2
         y: 10,
-        b: "#94c7fe",       
-        nl: [1, 7, 14] },   // a 7-is wrong, this is only a test for slant line. Correctly: [1, 14]
-    {   x: 25,      // 3
+        b: "#367",       
+        nl: [1, 5, 7, 14] },
+    {   x: 35,      // 3
         y: 25,
-        b: "Crimson",       // color-test #2  //https://htmlcolorcodes.com/color-names/
-        nl: [4, 10] },
+        b: "#567", 
+        nl: [0, 4, 10] },
     {   x: 60,      // 4
         y: 25,
         b: "white",          
         nl: [1, 3, 5, 7] },
-    {   x: 95,      // 5
+    {   x: 85,      // 5
         y: 25,
-        b: "RoyalBlue",     // color-test #3 
-        nl: [4, 13] },
-    {   x: 40,      // 6
+        b: "#767",
+        nl: [2, 4, 13] },
+    {   x: 30,      // 6
         y: 40,
-        b: "white",
-        nl: [7, 11] },
-    {   x: 100,      // 7   (correctly:  x: 60, y: 40, és nl: [4, 6, 8], slant line test)
-        y: 33,
-        b: "yellow",        // color-test #4
+        b: "#b67",
+        nl: [0, 7, 11] },
+    {   x: 80,
+        y: 53,
+        b: "#967",
         nl: [2, 4, 6, 8] },
-    // HW: to continue! (the slant line test and the color-test can be deleted)
 ]
 drag = { started: -1, sx: 0, sy: 0, lastx: 0, lasty: 0 }
 function dragstart(e) {
