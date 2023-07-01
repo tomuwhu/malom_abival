@@ -162,7 +162,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (i < d.length) {
             x = [d[i].x, p.x], y = [d[i].y, p.y], dy = y[1] - y[0], dx = x[1] - x[0]
             c = Math.sqrt((x[1] - x[0]) ** 2 + (y[1] - y[0]) ** 2)
-            y = [y[0] + r*dy/c, y[1] - r*dy/c + 2], x = [x[0] + r*dx/c + 2, x[1] - r*dx/c]
+            y = [y[0] + r*dy/c, y[1] - r*dy/c], x = [x[0] + r*dx/c, x[1] - r*dx/c]
             // https://user-images.githubusercontent.com/34095687/249900032-7441001b-7f75-422e-a8f1-31fd893f7538.jpeg
             return `<line x1="${x[0]}" y1="${y[0]}" x2="${x[1]}" y2="${y[1]}" stroke="#123432" stroke-width="0.6"/>`
         }
