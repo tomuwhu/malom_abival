@@ -54,7 +54,7 @@ function dragend(e) {
         cy = Number(e.target.getAttribute("cy"))
         gp = false
         d[id].nl.forEach(n => {
-            if (n < d.length && d[n].b == "white" && Math.abs(d[n].x - cx) < r && Math.abs(d[n].y - cy) < r)
+            if (n < d.length && d[n].b == "white" && Math.abs(d[n].x - cx) < 2 * r && Math.abs(d[n].y - cy) < 2 * r)
                 gp = true, gpn = n
         })
         if (gp) {
