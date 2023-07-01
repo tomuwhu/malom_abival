@@ -14,7 +14,7 @@ d = [
         nl: [1, 7, 14] },   // a 7-is wrong, this is only a test for slant line. Correctly: [1, 14]
     {   x: 25,      // 3
         y: 25,
-        b: "Crimson",          // color-test #2  //https://htmlcolorcodes.com/color-names/
+        b: "Crimson",       // color-test #2  //https://htmlcolorcodes.com/color-names/
         nl: [4, 10] },
     {   x: 60,      // 4
         y: 25,
@@ -22,7 +22,7 @@ d = [
         nl: [1, 3, 5, 7] },
     {   x: 95,      // 5
         y: 25,
-        b: "RoyalBlue",          // color-test #3 
+        b: "RoyalBlue",     // color-test #3 
         nl: [4, 13] },
     {   x: 40,      // 6
         y: 40,
